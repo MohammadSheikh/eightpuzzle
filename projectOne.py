@@ -1,6 +1,4 @@
-import sys 
 import heapq
-import time
 from copy import deepcopy
 
 # Bunch of the code in this main function was taken from the professor's sample slides since this is just a trivial driver main function.
@@ -29,7 +27,6 @@ def driver():
         
         setup = first_line, second_line, third_line
     
-
     algorithm_choice = int(input("Select algorithm. (1) for Uniform Cost Search, (2) for the Misplaced Tile Heuristic, or (3) the Manhattan Distance Heuristic: "))
 
     searching(algorithm_choice, setup)
@@ -45,7 +42,7 @@ class Node:
         self.cost = cost
 
     # Had a typeerror, so I consulted this website https://stackoverflow.com/questions/66198575/typeerror-not-supported-between-instances-of-node-and-node
-    # for help on theses 6 def functions
+    # for help on these 6 def functions
     def __eq__(self, other):
         return ((self.init_state, self.depth, self.cost, self.goal_test) == (other.init_state, other.depth, other.cost, other.goal_test))
     def __ne__(self, other):
@@ -64,7 +61,7 @@ def searching(algorithm_choice, setup):
     exp_nodes = 0
     max_size_queue = 0
 
-    # UCS
+    # UCS, h(n) is hardcoded to 0, but similar to A* algorithm
     if algorithm_choice == 1:
         no_existing_heuristic_cost = 0
         starting_node = Node(setup, 0, no_existing_heuristic_cost)
@@ -109,9 +106,9 @@ def searching(algorithm_choice, setup):
                 if algorithm_choice == 2:
                     expansion[k].cost = misplaced_tile_heuristic(expansion[k].init_state)
                 
-                # UCS
+                # UCS, in this case each expanded node as a h(n) of 1
                 if algorithm_choice == 1:
-                    expansion[k].cost = 0
+                    expansion[k].cost = 1
             
             # Everytime there is a new entry in the list of nodes, that means a node has been expanded overall.
             exp_nodes += 1
