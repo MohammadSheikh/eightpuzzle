@@ -1,7 +1,6 @@
 import heapq
 from copy import deepcopy
 
-# Bunch of the code in this main function was taken from the professor's sample slides since this is just a trivial driver main function.
 def driver():
     choice = int(input("Welcome to Mahamadsaad's 8-Puzzle Solver. Type '1' to use a default puzzle, or '2' to create your own: "))
 
@@ -40,9 +39,7 @@ class Node:
         self.init_state = init_state
         self.depth = depth
         self.cost = cost
-
-    # Had a typeerror, so I consulted this website https://stackoverflow.com/questions/66198575/typeerror-not-supported-between-instances-of-node-and-node
-    # for help on these 6 def functions
+        
     def __eq__(self, other):
         return ((self.init_state, self.depth, self.cost, self.goal_test) == (other.init_state, other.depth, other.cost, other.goal_test))
     def __ne__(self, other):
@@ -61,7 +58,6 @@ def searching(algorithm_choice, setup):
     exp_nodes = 0
     max_size_queue = 0
 
-    # UCS, h(n) is hardcoded to 0, but similar to A* algorithm
     if algorithm_choice == 1:
         no_existing_heuristic_cost = 0
         starting_node = Node(setup, 0, no_existing_heuristic_cost)
@@ -141,10 +137,6 @@ def expand_it(setup):
                 row = i
                 column = j
     
-    # Note: We know that i and j only go from 0 to 2, since it's a 3x3 puzzle
-    # Therefore, we will keep this in mind because i[0] (or row[0]) means the top row, and i[2] (or row[2]) means bottom row
-    # Also, j[0] (or column[0]) means left column, j[2] (or column[2]) means right column
-    # We will use what we know from above in the following if-statements sequence:
     if column != len(setup.init_state) - 1 : # the right-most column
         right_column = deepcopy(setup.init_state)
         # sliding over the stuff from the column right 
