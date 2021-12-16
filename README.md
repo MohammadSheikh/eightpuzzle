@@ -1,4 +1,4 @@
-# Eight Tile Puzzle
+# Eight Tile Puzzle - Artificial Intelligence
 
 ## Introduction
 The concept of “Eight Puzzle” derives from the actual game, “Fifteen Puzzle”. This consists of a grid that is 3x3 with 9 entries 0 through 8, with 0 being the “empty” one. This is so that each tile could be unique to its own integer. A tile next to 0 can be moved into its place, but that previous tile must be assigned to be 0.
